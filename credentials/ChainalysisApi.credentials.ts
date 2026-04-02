@@ -105,7 +105,7 @@ export class ChainalysisApi implements ICredentialType {
       displayName: 'Base URL',
       name: 'baseUrl',
       type: 'string',
-      default: '',
+      default: 'https://api.chainalysis.com',
       placeholder: 'https://api.chainalysis.com',
       description:
         'Base URL for the API. Leave empty to use the default URL based on product selection.',
