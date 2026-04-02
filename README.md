@@ -1,6 +1,6 @@
 # n8n-nodes-chainalysis
 
-> [Velocity BPA Licensing Notice]
+> **[Velocity BPA Licensing Notice]**
 >
 > This n8n node is licensed under the Business Source License 1.1 (BSL 1.1).
 >
@@ -8,312 +8,176 @@
 >
 > For licensing information, visit https://velobpa.com/licensing or contact licensing@velobpa.com.
 
-A comprehensive n8n community node for Chainalysis blockchain analytics, providing 23 resources and 250+ operations for address screening, transaction monitoring, sanctions checking, risk assessment, KYT compliance, and Reactor investigations.
+This n8n community node provides comprehensive integration with Chainalysis blockchain analytics platform, offering 5 specialized resources for cryptocurrency compliance and investigation workflows. Key capabilities include address screening for sanctions compliance, real-time transaction monitoring, risk assessment scoring, and detailed address intelligence gathering.
 
-![n8n](https://img.shields.io/badge/n8n-community_node-orange)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![n8n Community Node](https://img.shields.io/badge/n8n-Community%20Node-blue)
 ![License](https://img.shields.io/badge/license-BSL--1.1-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
+![Blockchain Analytics](https://img.shields.io/badge/Blockchain-Analytics-orange)
+![Compliance](https://img.shields.io/badge/Compliance-Ready-green)
+![Cryptocurrency](https://img.shields.io/badge/Crypto-Intelligence-purple)
 
 ## Features
 
-- **Address Screening**: Screen cryptocurrency addresses for risk, exposure, and sanctions
-- **Transaction Monitoring**: Real-time transaction screening and risk assessment
-- **Sanctions Compliance**: OFAC, UN, and EU sanctions list screening
-- **KYT (Know Your Transaction)**: Transfer, withdrawal, and deposit monitoring
-- **Risk Assessment**: Comprehensive risk scoring with category breakdowns
-- **Entity & Cluster Analysis**: Entity identification and cluster tracking
-- **Reactor Investigations**: Graph-based blockchain investigations
-- **Webhook Integration**: Real-time event notifications
-- **Multi-Network Support**: Bitcoin, Ethereum, TRON, and 25+ networks
+- **Address Screening** - Screen cryptocurrency addresses against sanctions lists and known entities
+- **Transaction Monitoring** - Monitor blockchain transactions in real-time for suspicious activity
+- **Sanctions Compliance** - Automated compliance checking against OFAC and international sanctions lists
+- **Risk Assessment** - Calculate risk scores for addresses and transactions based on behavioral patterns
+- **Address Intelligence** - Gather comprehensive intelligence on cryptocurrency addresses and entities
+- **Multi-Chain Support** - Support for Bitcoin, Ethereum, and other major blockchain networks
+- **Real-Time Alerts** - Configure automated alerts for high-risk transactions and addresses
+- **Compliance Reporting** - Generate detailed compliance reports for regulatory requirements
 
 ## Installation
 
 ### Community Nodes (Recommended)
 
 1. Open n8n
-2. Go to **Settings** > **Community Nodes**
-3. Click **Install**
+2. Go to **Settings** → **Community Nodes**
+3. Click **Install a community node**
 4. Enter `n8n-nodes-chainalysis`
 5. Click **Install**
 
 ### Manual Installation
 
 ```bash
-cd ~/.n8n/custom
+cd ~/.n8n
 npm install n8n-nodes-chainalysis
 ```
 
 ### Development Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/Velocity-BPA/n8n-nodes-chainalysis.git
 cd n8n-nodes-chainalysis
-
-# Install dependencies
 npm install
-
-# Build the project
 npm run build
-
-# Link to n8n
-npm link
-cd ~/.n8n
-npm link n8n-nodes-chainalysis
+mkdir -p ~/.n8n/custom
+ln -s $(pwd) ~/.n8n/custom/n8n-nodes-chainalysis
+n8n start
 ```
 
 ## Credentials Setup
 
-### Chainalysis API Credentials
-
-| Field | Description |
-|-------|-------------|
-| Product | Select Chainalysis product (Address Screening, KYT, Reactor, Sanctions) |
-| API Key | Your Chainalysis API key |
-| API Secret | API secret (if required) |
-| Organization ID | Your organization identifier |
-| Environment | Production or Sandbox |
-
-### Chainalysis KYT Credentials
-
-| Field | Description |
-|-------|-------------|
-| KYT API Key | Your KYT-specific API key |
-| Organization ID | Your organization identifier |
-| User ID | Default user ID for operations |
-| Environment | Production or Sandbox |
-
-### Chainalysis Reactor Credentials
-
-| Field | Description |
-|-------|-------------|
-| Reactor API Key | Your Reactor API key |
-| Organization ID | Your organization identifier |
-| Graph API Endpoint | Custom graph endpoint (optional) |
-| Environment | Production or Sandbox |
+| Field | Description | Required |
+|-------|-------------|----------|
+| API Key | Your Chainalysis API key from the dashboard | Yes |
+| Environment | API environment (production/sandbox) | Yes |
+| Base URL | Custom API base URL (optional) | No |
 
 ## Resources & Operations
 
-### Address Screening
-- Screen Address
-- Get Address Risk
-- Get Address Exposures
-- Get Address Cluster
-- Get Address Summary
+### 1. Address Screening
 
-### Transaction Screening
-- Screen Transaction
-- Get Transaction Risk
-- Get Transaction Details
+| Operation | Description |
+|-----------|-------------|
+| Screen Address | Screen a single cryptocurrency address against sanctions lists |
+| Batch Screen | Screen multiple addresses simultaneously |
+| Get Screening Results | Retrieve results from a previous screening operation |
+| Update Screening | Update screening parameters for an existing address |
 
-### Sanctions Screening
-- Check Sanctions Status
-- Screen Against OFAC
-- Bulk Sanctions Check
+### 2. Transaction Monitoring
 
-### Risk Assessment
-- Get Risk Score
-- Get Risk Breakdown
+| Operation | Description |
+|-----------|-------------|
+| Monitor Transaction | Monitor a specific transaction for compliance violations |
+| Set Monitoring Rules | Configure automated monitoring rules and thresholds |
+| Get Monitoring Alerts | Retrieve active monitoring alerts |
+| Stop Monitoring | Disable monitoring for specific transactions or addresses |
+| Get Transaction History | Retrieve monitoring history for transactions |
 
-### Entity
-- Get Entity
-- Search Entities
+### 3. Sanctions Compliance
 
-### Cluster
-- Get Cluster Info
-- Get Cluster Addresses
+| Operation | Description |
+|-----------|-------------|
+| Check Sanctions | Check address or entity against current sanctions lists |
+| Get Sanctions List | Retrieve current sanctions lists and updates |
+| Validate Compliance | Perform comprehensive compliance validation |
+| Generate Compliance Report | Create detailed compliance reports |
+| Export Compliance Data | Export compliance data for regulatory submissions |
 
-### Exposure
-- Get Direct Exposure
-- Get Indirect Exposure
+### 4. Risk Assessment
 
-### Alert
-- Get Alerts
-- Get Alert Details
-- Update Alert Status
+| Operation | Description |
+|-----------|-------------|
+| Calculate Risk Score | Calculate risk score for addresses or transactions |
+| Get Risk Factors | Retrieve detailed risk factor analysis |
+| Set Risk Thresholds | Configure custom risk scoring thresholds |
+| Compare Risk Profiles | Compare risk profiles between multiple addresses |
+| Generate Risk Report | Create comprehensive risk assessment reports |
 
-### Case
-- Create Case
-- Get Case
-- Get Cases
+### 5. Address Intelligence
 
-### Transfer (KYT)
-- Register Transfer
-- Get Transfers
-- Get Transfer Risk
-
-### Withdrawal (KYT)
-- Register Withdrawal
-- Get Withdrawals
-
-### Deposit (KYT)
-- Register Deposit Address
-- Get Deposit Addresses
-
-### User (KYT)
-- Register User
-- Get User
-- Get Users
-
-### Reactor (Investigations)
-- Create Investigation
-- Get Investigations
-- Get Investigation Graph
-
-### Graph
-- Get Address Graph
-- Get Shortest Path
-- Get Fund Flow
-
-### Webhook
-- Create Webhook
-- Get Webhooks
-- Delete Webhook
-
-### Utility
-- Validate Address
-- Get API Status
-- Test Connection
-
-## Trigger Node
-
-The **Chainalysis Trigger** node receives real-time events via webhooks:
-
-### Event Categories
-
-- **Alert Events**: Alert created, updated, escalated, dismissed
-- **Address Events**: Address screened, risk changed, sanctioned
-- **Transaction Events**: Transaction screened, suspicious activity
-- **Transfer Events (KYT)**: Transfer registered, withdrawal attempt
-- **Case Events**: Case created, updated, closed
-- **Sanctions Events**: Sanctions match, list updates
-- **Monitoring Events**: Threshold exceeded, monitor alerts
+| Operation | Description |
+|-----------|-------------|
+| Get Address Intelligence | Retrieve comprehensive intelligence on cryptocurrency addresses |
+| Get Entity Information | Get detailed information about known entities |
+| Search Addresses | Search addresses by various criteria |
+| Get Address Cluster | Retrieve address clustering information |
+| Get Transaction Graph | Analyze transaction flow and relationships |
 
 ## Usage Examples
 
-### Screen an Address
-
 ```javascript
-// Screen a Bitcoin address for risk
+// Screen Bitcoin address for sanctions compliance
 {
-  "resource": "addressScreening",
-  "operation": "screenAddress",
-  "address": "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
-  "network": "bitcoin"
+  "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+  "currency": "BTC",
+  "screening_type": "sanctions"
 }
 ```
 
-### Check Sanctions Status
-
 ```javascript
-// Check if address is on any sanctions list
+// Monitor Ethereum transaction for suspicious activity
 {
-  "resource": "sanctionsScreening",
-  "operation": "checkSanctions",
-  "address": "0x742d35Cc6634C0532925a3b844Bc9e7595f5aB1D"
-}
-```
-
-### Register KYT Transfer
-
-```javascript
-// Register an incoming transfer for compliance
-{
-  "resource": "transfer",
-  "operation": "registerTransfer",
-  "userId": "user_123",
+  "transaction_hash": "0x5c504ed432cb51138bcf09aa5e8a410dd4a1e204ef84bfed1be16dfba1b22060",
   "network": "ethereum",
-  "additionalFields": {
-    "assetAmount": 1.5,
-    "direction": "received"
-  }
+  "monitoring_rules": ["high_risk_addresses", "large_amounts"]
 }
 ```
-
-### Create Investigation
 
 ```javascript
-// Create a new Reactor investigation
+// Calculate risk score for multiple addresses
 {
-  "resource": "reactor",
-  "operation": "createInvestigation",
-  "additionalFields": {
-    "name": "Suspicious Activity Investigation",
-    "description": "Investigating potential money laundering"
-  }
+  "addresses": [
+    "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+    "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy"
+  ],
+  "risk_factors": ["sanctions", "darkweb", "exchange"],
+  "include_details": true
 }
 ```
 
-## Chainalysis Concepts
-
-| Term | Description |
-|------|-------------|
-| Risk Score | 0-10 scale assessment of address/transaction risk |
-| Exposure | Connection to risky addresses (direct or indirect) |
-| Direct Exposure | First-hop risk exposure |
-| Indirect Exposure | Multi-hop risk exposure |
-| Category | Classification of address activity |
-| Entity | Known organization or service |
-| Cluster | Group of related addresses |
-| Attribution | Identity of address owner |
-| KYT | Know Your Transaction monitoring |
-| Reactor | Investigation and graphing tool |
-
-## Networks
-
-| Network | Symbol | Smart Contracts |
-|---------|--------|-----------------|
-| Bitcoin | BTC | No |
-| Ethereum | ETH | Yes |
-| TRON | TRX | Yes |
-| Polygon | MATIC | Yes |
-| BNB Smart Chain | BNB | Yes |
-| Solana | SOL | Yes |
-| Litecoin | LTC | No |
-| XRP Ledger | XRP | No |
-| Arbitrum | ARB | Yes |
-| Optimism | OP | Yes |
-| Base | ETH | Yes |
-| Avalanche | AVAX | Yes |
+```javascript
+// Get comprehensive address intelligence
+{
+  "address": "34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo",
+  "currency": "BTC",
+  "include_transactions": true,
+  "include_clustering": true,
+  "date_range": "30d"
+}
+```
 
 ## Error Handling
 
-Enable "Continue On Fail" in the node settings to handle errors gracefully:
-
-```javascript
-// Failed operations return error object
-{
-  "error": "Address not found"
-}
-```
-
-## Security Best Practices
-
-- Never log API keys or secrets
-- Use environment variables for credentials
-- Enable webhook signature verification
-- Implement proper access controls
-- Follow data retention policies
-- Audit API calls regularly
+| Error | Description | Solution |
+|-------|-------------|----------|
+| Invalid API Key | API authentication failed | Verify API key in credentials |
+| Rate Limit Exceeded | Too many requests in time period | Implement request throttling |
+| Address Not Found | Cryptocurrency address not recognized | Verify address format and network |
+| Insufficient Permissions | API key lacks required permissions | Contact Chainalysis support for access |
+| Network Timeout | Request timeout during API call | Retry request or check network connectivity |
+| Invalid Currency | Unsupported cryptocurrency specified | Use supported currency codes (BTC, ETH, etc.) |
 
 ## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Build
 npm run build
-
-# Run tests
 npm test
-
-# Lint
 npm run lint
-
-# Format
-npm run format
+npm run dev
 ```
 
 ## Author
@@ -330,30 +194,24 @@ This n8n community node is licensed under the **Business Source License 1.1**.
 Permitted for personal, educational, research, and internal business use.
 
 ### Commercial Use
-Use of this node within any SaaS, PaaS, hosted platform, managed service,
-or paid automation offering requires a commercial license.
+Use of this node within any SaaS, PaaS, hosted platform, managed service, or paid automation offering requires a commercial license.
 
-For licensing inquiries:
-**licensing@velobpa.com**
+For licensing inquiries: **licensing@velobpa.com**
 
 See [LICENSE](LICENSE), [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md), and [LICENSING_FAQ.md](LICENSING_FAQ.md) for details.
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run `npm run lint` and `npm test`
-5. Submit a pull request
+Contributions are welcome! Please ensure:
+
+1. Code follows existing style conventions
+2. All tests pass (`npm test`)
+3. Linting passes (`npm run lint`)
+4. Documentation is updated for new features
+5. Commit messages are descriptive
 
 ## Support
 
-- 📖 [Documentation](https://github.com/Velocity-BPA/n8n-nodes-chainalysis)
-- 🐛 [Issue Tracker](https://github.com/Velocity-BPA/n8n-nodes-chainalysis/issues)
-- 💬 [Discussions](https://github.com/Velocity-BPA/n8n-nodes-chainalysis/discussions)
-
-## Acknowledgments
-
-- [Chainalysis](https://www.chainalysis.com/) for their blockchain analytics platform
-- [n8n](https://n8n.io/) for the workflow automation platform
-- The open-source community for their contributions
+- **Issues**: [GitHub Issues](https://github.com/Velocity-BPA/n8n-nodes-chainalysis/issues)
+- **Chainalysis API Documentation**: [Chainalysis Developer Portal](https://docs.chainalysis.com)
+- **Blockchain Compliance Guide**: [Chainalysis Compliance Resources](https://www.chainalysis.com/compliance)
