@@ -1,45 +1,36 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "es2019",
+    "lib": [
+      "es2019"
+    ],
     "module": "commonjs",
-    "lib": ["ES2022"],
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
+    "moduleResolution": "node",
     "outDir": "./dist",
-    "rootDir": ".",
+    "rootDir": "./",
+    "removeComments": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "useUnknownInCatchVariables": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "exactOptionalPropertyTypes": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": false,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": false,
-    "moduleResolution": "node",
-    "baseUrl": ".",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
   "include": [
-    "credentials/**/*.ts",
-    "nodes/**/*.ts"
+    "nodes",
+    "credentials"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "test"
+    "**/*.test.ts",
+    "dist"
   ]
 }
